@@ -16,10 +16,6 @@ static WindowFlex *sharedPlugin;
 - (NSSize)zen_windowWillResize:(NSWindow *)sender
                         toSize:(NSSize)frameSize
 {
-    if (frameSize.width < 620.0f) {
-        frameSize.width = 620.0f;
-    }
-
     return frameSize;
 }
 
