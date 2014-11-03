@@ -65,8 +65,6 @@ static WindowFlex *sharedPlugin;
         }
     }
 
-    //NSLog(@"conf: %@", self.toolbar.configurationDictionary);
-
     return size;
 }
 
