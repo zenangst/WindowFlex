@@ -37,7 +37,13 @@ static WindowFlex *sharedPlugin;
     Class activityClass = NSClassFromString(@"_IDEActivityViewControllerToolbarItem");
 
     if ([self isKindOfClass:activityClass]) {
-        size.width = ZENToolbarMinSize;
+        NSWindow *keyWindow = [[NSApplication sharedApplication] keyWindow];
+
+        if (keyWindow.frame.size.width > ZENWindowSizeMinimumWidth) {
+            size.width = 2000.0f;
+        } else {
+            size.width = ZENToolbarMinSize;
+        }
     }
 
     return size;
