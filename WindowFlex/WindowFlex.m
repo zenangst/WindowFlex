@@ -12,7 +12,7 @@
 CGFloat ZENToolbarMinSize = 320.0f;
 CGFloat ZENToolbarMaxSize = 2000.0f;
 CGFloat ZENToolbarDefaultMinSize = 418.0f;
-CGFloat ZENWindowSizeMinimumWidth = 608.0f;
+CGFloat ZENWindowSizeMinimumWidth = 600.0f;
 CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
 static WindowFlex *sharedPlugin;
