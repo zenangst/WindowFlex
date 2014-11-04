@@ -14,8 +14,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD61755C1A08BAEF00383A63 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../MarvinXcode/LICENSE.md; sourceTree = "<group>"; };
-		BD61755D1A08BAEF00383A63 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../MarvinXcode/README.md; sourceTree = "<group>"; };
+		BD61755E1A08BB8A00383A63 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		BD61755F1A08BB8A00383A63 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BDA650E51A0408F2005BBC5E /* WindowFlex.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowFlex.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA650E81A0408F2005BBC5E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		BDA650EA1A0408F2005BBC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -41,8 +41,8 @@
 		BDA650DC1A0408F2005BBC5E = {
 			isa = PBXGroup;
 			children = (
-				BD61755C1A08BAEF00383A63 /* LICENSE.md */,
-				BD61755D1A08BAEF00383A63 /* README.md */,
+				BD61755E1A08BB8A00383A63 /* LICENSE.md */,
+				BD61755F1A08BB8A00383A63 /* README.md */,
 				BDA650EC1A0408F2005BBC5E /* WindowFlex */,
 				BDA650E71A0408F2005BBC5E /* Frameworks */,
 				BDA650E61A0408F2005BBC5E /* Products */,
