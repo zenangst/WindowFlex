@@ -17,6 +17,26 @@ CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
 static WindowFlex *sharedPlugin;
 
+@implementation NSView (ZEN)
+
+- (void)zen_setFrame:(NSRect)frame
+{
+    if ([self isKindOfClass:NSClassFromString(@"IDENavBar")]) {
+        NSView *view = self.superview;
+        NSView *contentView = [[view subviews] objectAtIndex:1];
+
+        if (view.frame.size.height >= contentView.frame.size.height) {
+            NSRect newFrame = contentView.frame;
+            newFrame.size.height = view.frame.size.height;
+            [contentView zen_setFrame:newFrame];
+        }
+    }
+
+    [self zen_setFrame:frame];
+}
+
+@end
+
 @implementation NSWindowController (ZEN)
 
 - (NSSize)zen_windowWillResize:(NSWindow *)sender
@@ -137,6 +157,11 @@ static WindowFlex *sharedPlugin;
         [self swizzleClass:[NSToolbarItem class]
           originalSelector:@selector(maxSize)
           swizzledSelector:@selector(zen_maxSize)
+            instanceMethod:YES];
+
+        [self swizzleClass:[NSView class]
+          originalSelector:@selector(setFrame:)
+          swizzledSelector:@selector(zen_setFrame:)
             instanceMethod:YES];
     });
 }
