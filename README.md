@@ -10,6 +10,10 @@ It's awesome.
 
 ![](https://raw.githubusercontent.com/zenangst/WindowFlex/master/screenshot.png)
 
+#### Install via Alcatraz
+
+* Install plugin and restart Xcode.
+
 #### Build from Source
 
 * Build the Xcode project. The plug-in will automatically be installed in `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`.
