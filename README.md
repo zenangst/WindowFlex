@@ -1,24 +1,4 @@
-####Marvin is a plugin for Xcode, it adds a large collection of text selections, duplication and deletion commands.
-
-It includes the following commands (some might seem obvious but some need a little more detail to describe its function and value).
-
-- Delete Line
-- Duplicate Line
-- Join Line
-- Move To EOL and Insert LF
-- Proper Save
-  - This command will remove trailing whitespace and add a CR at the end of the document before saving
-- Select Current Word
-- Select Line Contents
-  - This differs a bit from Select Line as it will exclude whitespace characters until it reaches the first valid character at both the beginning and end of the current line
-- Select Next Word
-- Select Previous Word
-- Select Word Above
-- Select Word Below
-
-#### Install via Alcatraz
-
-* Install plugin and restart Xcode.
+####WindowFlex gives you control over your Xcode windows.
 
 #### Build from Source
 
