@@ -1,7 +1,8 @@
 ####WindowFlex gives you control over your Xcode windows.
 
 Tired of conforming to the standard Xcode window constraints?, sigh no more. It's time to question the status quo.
-WindowFlex unlocks the default window constrains, giving you the options of having your window be 600 in width
+
+WindowFlex unlocks the default window constrains, giving you the options of having your window be 608 in width
 while having the toolbar visible. You are also free to configure your toolbar on a project per project basis.
 
 ####tl;dr
