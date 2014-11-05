@@ -41,7 +41,7 @@ static WindowFlex *sharedPlugin;
             NSRect newFrame = contentView.frame;
             newFrame.size.height = containerView.frame.size.height;
             [contentView zen_setFrame:newFrame];
-            frame.origin.y = (newFrame.size.height / 2);
+            frame.origin.y = (newFrame.size.height / 1.2f);
         }
     }
 
