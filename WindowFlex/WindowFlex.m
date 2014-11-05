@@ -22,13 +22,26 @@ static WindowFlex *sharedPlugin;
 - (void)zen_setFrame:(NSRect)frame
 {
     if ([self isKindOfClass:NSClassFromString(@"IDENavBar")]) {
-        NSView *view = self.superview;
-        NSView *contentView = [[view subviews] objectAtIndex:1];
+        NSView *containerView = self.superview;
+        NSView *contentView;
 
-        if (view.frame.size.height >= contentView.frame.size.height) {
+        for (NSView *view in containerView.subviews) {
+            BOOL foundClass = [view isKindOfClass:NSClassFromString(@"DVTBorderedView")];
+
+            if (foundClass) {
+                contentView = view;
+                break;
+            }
+        }
+
+        BOOL shouldResize = (([containerView.subviews count] < 4) &&
+                             (containerView.frame.size.height >= contentView.frame.size.height));
+
+        if (shouldResize) {
             NSRect newFrame = contentView.frame;
-            newFrame.size.height = view.frame.size.height;
+            newFrame.size.height = containerView.frame.size.height;
             [contentView zen_setFrame:newFrame];
+            frame.origin.y = (newFrame.size.height / 2);
         }
     }
 
