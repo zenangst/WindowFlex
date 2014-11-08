@@ -6,8 +6,8 @@
 //    Copyright (c) 2014 zenangst. All rights reserved.
 //
 
-#import <objc/objc-runtime.h>
 #import "WindowFlex.h"
+#import "NSObject+ZENSwizzle.h"
 
 CGFloat ZENToolbarMinSize = 300.0f;
 CGFloat ZENToolbarMaxSize = 2000.0f;
@@ -167,55 +167,16 @@ static WindowFlex *sharedPlugin;
     Class IDEWorkspaceWindowControllerClass = NSClassFromString(@"IDEWorkspaceWindowController");
 
     dispatch_once(&onceToken, ^{
-        [self swizzleClass:IDEWorkspaceWindowControllerClass
-          originalSelector:@selector(windowWillResize:toSize:)
-          swizzledSelector:@selector(zen_windowWillResize:toSize:)
-            instanceMethod:YES];
+        [NSWindowController zen_swizzleInstanceMethod:@"windowWillResize:toSize:"
+                                         withSelector:@"zen_windowWillResize:toSize:"
+                                              onClass:IDEWorkspaceWindowControllerClass];
 
-        [self swizzleClass:[NSToolbarItem class]
-          originalSelector:@selector(minSize)
-          swizzledSelector:@selector(zen_minSize)
-            instanceMethod:YES];
+        [NSToolbarItem zen_swizzleInstanceMethod:@"minSize" withSelector:@"zen_minSize"];
+        [NSToolbarItem zen_swizzleInstanceMethod:@"maxSize" withSelector:@"zen_maxSize"];
 
-        [self swizzleClass:[NSToolbarItem class]
-          originalSelector:@selector(maxSize)
-          swizzledSelector:@selector(zen_maxSize)
-            instanceMethod:YES];
-
-        [self swizzleClass:[NSView class]
-          originalSelector:@selector(setFrame:)
-          swizzledSelector:@selector(zen_setFrame:)
-            instanceMethod:YES];
-
-        [self swizzleClass:[NSView class]
-          originalSelector:@selector(drawRect:)
-          swizzledSelector:@selector(zen_drawRect:)
-            instanceMethod:YES];
+        [NSView zen_swizzleInstanceMethod:@"setFrame:" withSelector:@"zen_setFrame:"];
+        [NSView zen_swizzleInstanceMethod:@"drawRect:" withSelector:@"zen_drawRect:"];
     });
-}
-
-- (void)swizzleClass:(Class)class originalSelector:(SEL)originalSelector swizzledSelector:(SEL)swizzledSelector instanceMethod:(BOOL)instanceMethod
-{
-    if (!class) return;
-
-    Method originalMethod;
-    Method swizzledMethod;
-
-    if (instanceMethod) {
-        originalMethod = class_getInstanceMethod(class, originalSelector);
-        swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
-    } else {
-        originalMethod = class_getClassMethod(class, originalSelector);
-        swizzledMethod = class_getClassMethod(class, swizzledSelector);
-    }
-
-    BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
-
-    if (didAddMethod) {
-        class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-    } else {
-        method_exchangeImplementations(originalMethod, swizzledMethod);
-    }
 }
 
 @end

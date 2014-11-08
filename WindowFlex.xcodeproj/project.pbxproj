@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */; };
 		BDA650E91A0408F2005BBC5E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA650E81A0408F2005BBC5E /* AppKit.framework */; };
 		BDA650EB1A0408F2005BBC5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA650EA1A0408F2005BBC5E /* Foundation.framework */; };
 		BDA650F01A0408F2005BBC5E /* WindowFlex.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = BDA650EF1A0408F2005BBC5E /* WindowFlex.xcscheme */; };
@@ -16,6 +17,8 @@
 /* Begin PBXFileReference section */
 		BD61755E1A08BB8A00383A63 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		BD61755F1A08BB8A00383A63 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BD7F14951A0E8DB800739441 /* NSObject+ZENSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZENSwizzle.h"; sourceTree = "<group>"; };
+		BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZENSwizzle.m"; sourceTree = "<group>"; };
 		BDA650E51A0408F2005BBC5E /* WindowFlex.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowFlex.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA650E81A0408F2005BBC5E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		BDA650EA1A0408F2005BBC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -72,6 +75,8 @@
 				BDA650F11A0408F2005BBC5E /* WindowFlex.h */,
 				BDA650F21A0408F2005BBC5E /* WindowFlex.m */,
 				BDA650ED1A0408F2005BBC5E /* Supporting Files */,
+				BD7F14951A0E8DB800739441 /* NSObject+ZENSwizzle.h */,
+				BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */,
 			);
 			path = WindowFlex;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */,
 				BDA650F31A0408F2005BBC5E /* WindowFlex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
