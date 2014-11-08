@@ -19,6 +19,16 @@ static WindowFlex *sharedPlugin;
 
 @implementation NSView (ZEN)
 
+- (void)zen_drawRect:(NSRect)dirtyRect
+{
+    if ([self isKindOfClass:NSClassFromString(@"DVTFindBarControllerContentView")]) {
+        [[NSColor colorWithSRGBRed:0.95 green:0.95 blue:0.95 alpha:1.0] setFill];
+        NSRectFill(dirtyRect);
+    }
+
+    [self zen_drawRect:dirtyRect];
+}
+
 - (void)zen_setFrame:(NSRect)frame
 {
     if ([self isKindOfClass:NSClassFromString(@"IDENavBar")]) {
@@ -175,6 +185,11 @@ static WindowFlex *sharedPlugin;
         [self swizzleClass:[NSView class]
           originalSelector:@selector(setFrame:)
           swizzledSelector:@selector(zen_setFrame:)
+            instanceMethod:YES];
+
+        [self swizzleClass:[NSView class]
+          originalSelector:@selector(drawRect:)
+          swizzledSelector:@selector(zen_drawRect:)
             instanceMethod:YES];
     });
 }
