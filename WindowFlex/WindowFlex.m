@@ -196,24 +196,25 @@ static WindowFlex *sharedPlugin;
 
 - (void)swizzleClass:(Class)class originalSelector:(SEL)originalSelector swizzledSelector:(SEL)swizzledSelector instanceMethod:(BOOL)instanceMethod
 {
-    if (class) {
-        Method originalMethod;
-        Method swizzledMethod;
-        if (instanceMethod) {
-            originalMethod = class_getInstanceMethod(class, originalSelector);
-            swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
-        } else {
-            originalMethod = class_getClassMethod(class, originalSelector);
-            swizzledMethod = class_getClassMethod(class, swizzledSelector);
-        }
+    if (!class) return;
 
-        BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+    Method originalMethod;
+    Method swizzledMethod;
 
-        if (didAddMethod) {
-            class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
-        } else {
-            method_exchangeImplementations(originalMethod, swizzledMethod);
-        }
+    if (instanceMethod) {
+        originalMethod = class_getInstanceMethod(class, originalSelector);
+        swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+    } else {
+        originalMethod = class_getClassMethod(class, originalSelector);
+        swizzledMethod = class_getClassMethod(class, swizzledSelector);
+    }
+
+    BOOL didAddMethod = class_addMethod(class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+
+    if (didAddMethod) {
+        class_replaceMethod(class, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
     }
 }
 
