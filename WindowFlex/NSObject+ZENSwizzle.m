@@ -9,47 +9,36 @@
 #import "NSObject+ZENSwizzle.h"
 
 @interface NSString (ZENSwizzle)
-+ (void)_swizzleMethod:(Method)originalMethod withSelector:(SEL)originalSelector withMethod:(Method)swizzledMethod withSelector:(SEL)swizzledSelector onClass:(Class)class;
++ (void)_swizzleMethod:(Method)originalMethod withSelector:(SEL)originalSelector withMethod:(Method)swizzledMethod withSelector:(SEL)swizzledSelector;
 @end
 
 @implementation NSObject (ZENSwizzle)
 
 + (void)zen_swizzleClassMethod:(NSString *)target withSelector:(NSString *)replacement
 {
-    [self zen_swizzleClassMethod:target withSelector:replacement onClass:self.class];
-}
-
-+ (void)zen_swizzleClassMethod:(NSString *)target withSelector:(NSString *)replacement onClass:(Class)class
-{
     SEL originalSelector = NSSelectorFromString(target);
     SEL swizzledSelector = NSSelectorFromString(replacement);
 
-    Method originalMethod = class_getClassMethod(class, originalSelector);
-    Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
+    Method originalMethod = class_getClassMethod(self.class, originalSelector);
+    Method swizzledMethod = class_getClassMethod(self.class, swizzledSelector);
 
-    [self zen_swizzleMethod:originalMethod withSelector:originalSelector withMethod:swizzledMethod withSelector:swizzledSelector onClass:class];
+    [self zen_swizzleMethod:originalMethod withSelector:originalSelector withMethod:swizzledMethod withSelector:swizzledSelector];
 }
 
 + (void)zen_swizzleInstanceMethod:(NSString *)target withSelector:(NSString *)replacement
 {
-    [self zen_swizzleInstanceMethod:target withSelector:replacement onClass:self.class];
-}
-
-+ (void)zen_swizzleInstanceMethod:(NSString *)target withSelector:(NSString *)replacement onClass:(Class)class
-{
     SEL originalSelector = NSSelectorFromString(target);
     SEL swizzledSelector = NSSelectorFromString(replacement);
-    Method originalMethod = class_getInstanceMethod(class, originalSelector);
-    Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+    Method originalMethod = class_getInstanceMethod(self.class, originalSelector);
+    Method swizzledMethod = class_getInstanceMethod(self.class, swizzledSelector);
 
-    [self zen_swizzleMethod:originalMethod withSelector:originalSelector withMethod:swizzledMethod withSelector:swizzledSelector onClass:class];
+    [self zen_swizzleMethod:originalMethod withSelector:originalSelector withMethod:swizzledMethod withSelector:swizzledSelector];
 }
 
 + (void)zen_swizzleMethod:(Method)originalMethod
              withSelector:(SEL)originalSelector
                withMethod:(Method)swizzledMethod
              withSelector:(SEL)swizzledSelector
-                  onClass:(Class)class
 {
     BOOL didAddMethod = class_addMethod(self.class, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
 
