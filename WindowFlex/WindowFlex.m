@@ -167,14 +167,14 @@ static WindowFlex *sharedPlugin;
     Class IDEWorkspaceWindowControllerClass = NSClassFromString(@"IDEWorkspaceWindowController");
 
     dispatch_once(&onceToken, ^{
-        [IDEWorkspaceWindowControllerClass zen_swizzleInstanceMethod:@"windowWillResize:toSize:"
-                                         withSelector:@"zen_windowWillResize:toSize:"];
+        [IDEWorkspaceWindowControllerClass zen_swizzleInstanceSelector:@selector(windowWillResize:toSize:)
+                                         withSelector:@selector(zen_windowWillResize:toSize:)];
 
-        [NSToolbarItem zen_swizzleInstanceMethod:@"minSize" withSelector:@"zen_minSize"];
-        [NSToolbarItem zen_swizzleInstanceMethod:@"maxSize" withSelector:@"zen_maxSize"];
+        [NSToolbarItem zen_swizzleInstanceSelector:@selector(minSize) withSelector:@selector(zen_minSize)];
+        [NSToolbarItem zen_swizzleInstanceSelector:@selector(maxSize) withSelector:@selector(zen_maxSize)];
 
-        [NSView zen_swizzleInstanceMethod:@"setFrame:" withSelector:@"zen_setFrame:"];
-        [NSView zen_swizzleInstanceMethod:@"drawRect:" withSelector:@"zen_drawRect:"];
+        [NSView zen_swizzleInstanceSelector:@selector(setFrame:) withSelector:@selector(zen_setFrame:)];
+        [NSView zen_swizzleInstanceSelector:@selector(drawRect:) withSelector:@selector(zen_drawRect:)];
     });
 }
 

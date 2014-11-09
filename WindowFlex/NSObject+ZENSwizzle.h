@@ -11,7 +11,7 @@
 
 @interface NSObject (ZENSwizzle)
 
-+ (void)zen_swizzleClassMethod:(NSString *)target withSelector:(NSString *)replacement;
-+ (void)zen_swizzleInstanceMethod:(NSString *)target withSelector:(NSString *)replacement;
++ (void)zen_swizzleClassSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector;
++ (void)zen_swizzleInstanceSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector;
 
 @end

@@ -14,21 +14,16 @@
 
 @implementation NSObject (ZENSwizzle)
 
-+ (void)zen_swizzleClassMethod:(NSString *)target withSelector:(NSString *)replacement
++ (void)zen_swizzleClassSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector
 {
-    SEL originalSelector = NSSelectorFromString(target);
-    SEL swizzledSelector = NSSelectorFromString(replacement);
-
     Method originalMethod = class_getClassMethod(self.class, originalSelector);
     Method swizzledMethod = class_getClassMethod(self.class, swizzledSelector);
 
     [self zen_swizzleMethod:originalMethod withSelector:originalSelector withMethod:swizzledMethod withSelector:swizzledSelector];
 }
 
-+ (void)zen_swizzleInstanceMethod:(NSString *)target withSelector:(NSString *)replacement
++ (void)zen_swizzleInstanceSelector:(SEL)originalSelector withSelector:(SEL)swizzledSelector
 {
-    SEL originalSelector = NSSelectorFromString(target);
-    SEL swizzledSelector = NSSelectorFromString(replacement);
     Method originalMethod = class_getInstanceMethod(self.class, originalSelector);
     Method swizzledMethod = class_getInstanceMethod(self.class, swizzledSelector);
 
