@@ -51,7 +51,7 @@ static WindowFlex *sharedPlugin;
             NSRect newFrame = contentView.frame;
             newFrame.size.height = containerView.frame.size.height;
             [contentView zen_setFrame:newFrame];
-            frame.origin.y = (newFrame.size.height / 1.2f);
+            frame.origin.y = (newFrame.size.height / 1.5f);
         }
     }
 
@@ -112,6 +112,9 @@ static WindowFlex *sharedPlugin;
 
     if ([self isKindOfClass:activityClass]) {
         size.width = ZENToolbarMaxSize;
+        NSView *view = self.view;
+        view.autoresizingMask = kCALayerWidthSizable;
+        view.autoresizesSubviews = YES;
     }
 
     return size;
