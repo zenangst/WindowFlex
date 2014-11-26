@@ -87,6 +87,19 @@ static WindowFlex *sharedPlugin;
     return YES;
 }
 
+- (BOOL)showsBaselineSeparator
+{
+    NSString *itemIdentifier = @"Xcode.IDEKit.CustomToolbarItem.Run";
+    [self.items enumerateObjectsUsingBlock:^(NSToolbarItem *toolbarItem, NSUInteger idx, BOOL *stop) {
+        if ([toolbarItem.itemIdentifier isEqualToString:itemIdentifier]) {
+            [self removeItemAtIndex:idx];
+            *stop = YES;
+        }
+    }];
+
+    return YES;
+}
+
 @end
 
 @implementation NSToolbarItem (ZEN)
