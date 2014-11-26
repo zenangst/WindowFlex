@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD222DE71A2654D700A3DB65 /* IDEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD222DE51A2654D700A3DB65 /* IDEFoundation.framework */; };
+		BD222DE81A2654D700A3DB65 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD222DE61A2654D700A3DB65 /* IDEKit.framework */; };
+		BD222DEB1A26571F00A3DB65 /* WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BD222DEA1A26571F00A3DB65 /* WindowFlex.m */; };
+		BD22D3E41A2651FC00A3DB65 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */; };
 		BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */; };
-		BDA650E91A0408F2005BBC5E /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA650E81A0408F2005BBC5E /* AppKit.framework */; };
-		BDA650EB1A0408F2005BBC5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDA650EA1A0408F2005BBC5E /* Foundation.framework */; };
 		BDA650F01A0408F2005BBC5E /* WindowFlex.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = BDA650EF1A0408F2005BBC5E /* WindowFlex.xcscheme */; };
-		BDA650F31A0408F2005BBC5E /* WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BDA650F21A0408F2005BBC5E /* WindowFlex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD222DE51A2654D700A3DB65 /* IDEFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEFoundation.framework; sourceTree = "<group>"; };
+		BD222DE61A2654D700A3DB65 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
+		BD222DE91A26571F00A3DB65 /* WindowFlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowFlex.h; sourceTree = "<group>"; };
+		BD222DEA1A26571F00A3DB65 /* WindowFlex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowFlex.m; sourceTree = "<group>"; };
+		BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BD61755E1A08BB8A00383A63 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		BD61755F1A08BB8A00383A63 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BD7F14951A0E8DB800739441 /* NSObject+ZENSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZENSwizzle.h"; sourceTree = "<group>"; };
@@ -24,8 +30,6 @@
 		BDA650EA1A0408F2005BBC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		BDA650EE1A0408F2005BBC5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA650EF1A0408F2005BBC5E /* WindowFlex.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = WindowFlex.xcscheme; path = WindowFlex.xcodeproj/xcshareddata/xcschemes/WindowFlex.xcscheme; sourceTree = SOURCE_ROOT; };
-		BDA650F11A0408F2005BBC5E /* WindowFlex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WindowFlex.h; sourceTree = "<group>"; };
-		BDA650F21A0408F2005BBC5E /* WindowFlex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WindowFlex.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,8 +37,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDA650E91A0408F2005BBC5E /* AppKit.framework in Frameworks */,
-				BDA650EB1A0408F2005BBC5E /* Foundation.framework in Frameworks */,
+				BD22D3E41A2651FC00A3DB65 /* Cocoa.framework in Frameworks */,
+				BD222DE71A2654D700A3DB65 /* IDEFoundation.framework in Frameworks */,
+				BD222DE81A2654D700A3DB65 /* IDEKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +68,9 @@
 		BDA650E71A0408F2005BBC5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BD222DE51A2654D700A3DB65 /* IDEFoundation.framework */,
+				BD222DE61A2654D700A3DB65 /* IDEKit.framework */,
+				BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */,
 				BDA650E81A0408F2005BBC5E /* AppKit.framework */,
 				BDA650EA1A0408F2005BBC5E /* Foundation.framework */,
 			);
@@ -72,11 +80,11 @@
 		BDA650EC1A0408F2005BBC5E /* WindowFlex */ = {
 			isa = PBXGroup;
 			children = (
-				BDA650F11A0408F2005BBC5E /* WindowFlex.h */,
-				BDA650F21A0408F2005BBC5E /* WindowFlex.m */,
-				BDA650ED1A0408F2005BBC5E /* Supporting Files */,
 				BD7F14951A0E8DB800739441 /* NSObject+ZENSwizzle.h */,
 				BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */,
+				BDA650ED1A0408F2005BBC5E /* Supporting Files */,
+				BD222DE91A26571F00A3DB65 /* WindowFlex.h */,
+				BD222DEA1A26571F00A3DB65 /* WindowFlex.m */,
 			);
 			path = WindowFlex;
 			sourceTree = "<group>";
@@ -157,8 +165,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD222DEB1A26571F00A3DB65 /* WindowFlex.m in Sources */,
 				BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */,
-				BDA650F31A0408F2005BBC5E /* WindowFlex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +248,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+				);
 				INFOPLIST_FILE = WindowFlex/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -254,6 +266,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+				);
 				INFOPLIST_FILE = WindowFlex/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;

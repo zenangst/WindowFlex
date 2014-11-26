@@ -17,6 +17,14 @@ CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
 static WindowFlex *sharedPlugin;
 
+@interface DVTControllerContentView : NSView
+@property (nonatomic) NSView *contentView;
+@end
+
+@interface DVTBorderedView : NSView
+@property (nonatomic) NSView *contentView;
+@end
+
 @implementation NSView (ZEN)
 
 - (void)zen_drawRect:(NSRect)dirtyRect
@@ -33,25 +41,26 @@ static WindowFlex *sharedPlugin;
 {
     if ([self isKindOfClass:NSClassFromString(@"IDENavBar")]) {
         NSView *containerView = self.superview;
-        NSView *contentView;
+        DVTBorderedView *borderedView;
 
-        for (NSView *view in containerView.subviews) {
+        for (id view in containerView.subviews) {
             BOOL foundClass = [view isKindOfClass:NSClassFromString(@"DVTBorderedView")];
 
             if (foundClass) {
-                contentView = view;
+                borderedView = view;
                 break;
             }
         }
 
+
         BOOL shouldResize = (([containerView.subviews count] < 4) &&
-                             (containerView.frame.size.height >= contentView.frame.size.height));
+                             (containerView.frame.size.height >= borderedView.frame.size.height));
 
         if (shouldResize) {
-            NSRect newFrame = contentView.frame;
-            newFrame.size.height = containerView.frame.size.height - 0.5f;
+            NSRect newFrame = borderedView.frame;
+            newFrame.size.height = containerView.frame.size.height;
             newFrame.origin.y = containerView.frame.origin.y;
-            [contentView zen_setFrame:newFrame];
+            [borderedView zen_setFrame:newFrame];
             frame.origin.y = (newFrame.size.height / 1.5f);
         }
     }
