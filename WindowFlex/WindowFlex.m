@@ -25,6 +25,9 @@ static WindowFlex *sharedPlugin;
 @property (nonatomic) NSView *contentView;
 @end
 
+@interface IDEControlGroup : DVTBorderedView
+@end
+
 @implementation NSView (ZEN)
 
 - (void)zen_drawRect:(NSRect)dirtyRect
@@ -44,24 +47,19 @@ static WindowFlex *sharedPlugin;
         DVTBorderedView *borderedView;
 
         for (id view in containerView.subviews) {
-            BOOL foundClass = [view isKindOfClass:NSClassFromString(@"DVTBorderedView")];
-
-            if (foundClass) {
+            if ([view isKindOfClass:NSClassFromString(@"DVTBorderedView")]) {
                 borderedView = view;
                 break;
             }
         }
 
-
         BOOL shouldResize = (([containerView.subviews count] < 4) &&
                              (containerView.frame.size.height >= borderedView.frame.size.height));
-
         if (shouldResize) {
-            NSRect newFrame = borderedView.frame;
-            newFrame.size.height = containerView.frame.size.height;
-            newFrame.origin.y = containerView.frame.origin.y;
+            CGFloat newHeight = 2.0f;
+            NSRect newFrame = containerView.frame;
+            newFrame.origin.y -= newHeight;
             [borderedView zen_setFrame:newFrame];
-            frame.origin.y = (newFrame.size.height / 1.5f);
         }
     }
 
