@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD222DE71A2654D700A3DB65 /* IDEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD222DE51A2654D700A3DB65 /* IDEFoundation.framework */; };
-		BD222DE81A2654D700A3DB65 /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD222DE61A2654D700A3DB65 /* IDEKit.framework */; };
 		BD222DEB1A26571F00A3DB65 /* WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BD222DEA1A26571F00A3DB65 /* WindowFlex.m */; };
 		BD22D3E41A2651FC00A3DB65 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */; };
 		BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */; };
@@ -16,8 +14,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD222DE51A2654D700A3DB65 /* IDEFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEFoundation.framework; sourceTree = "<group>"; };
-		BD222DE61A2654D700A3DB65 /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
 		BD222DE91A26571F00A3DB65 /* WindowFlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowFlex.h; sourceTree = "<group>"; };
 		BD222DEA1A26571F00A3DB65 /* WindowFlex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowFlex.m; sourceTree = "<group>"; };
 		BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -38,8 +34,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD22D3E41A2651FC00A3DB65 /* Cocoa.framework in Frameworks */,
-				BD222DE71A2654D700A3DB65 /* IDEFoundation.framework in Frameworks */,
-				BD222DE81A2654D700A3DB65 /* IDEKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,8 +62,6 @@
 		BDA650E71A0408F2005BBC5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BD222DE51A2654D700A3DB65 /* IDEFoundation.framework */,
-				BD222DE61A2654D700A3DB65 /* IDEKit.framework */,
 				BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */,
 				BDA650E81A0408F2005BBC5E /* AppKit.framework */,
 				BDA650EA1A0408F2005BBC5E /* Foundation.framework */,
