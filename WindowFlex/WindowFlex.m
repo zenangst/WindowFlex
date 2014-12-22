@@ -199,8 +199,6 @@ static WindowFlex *sharedPlugin;
         [NSToolbarItem zen_swizzleInstanceSelector:@selector(maxSize)
                                       withSelector:@selector(zen_maxSize)];
 
-        [NSView zen_swizzleInstanceSelector:@selector(setFrame:)
-                               withSelector:@selector(zen_setFrame:)];
         [NSView zen_swizzleInstanceSelector:@selector(drawRect:)
                                withSelector:@selector(zen_drawRect:)];
     });
