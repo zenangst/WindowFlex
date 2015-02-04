@@ -28,46 +28,6 @@ static WindowFlex *sharedPlugin;
 @interface IDEControlGroup : DVTBorderedView
 @end
 
-@implementation NSView (ZEN)
-
-- (void)zen_drawRect:(NSRect)dirtyRect
-{
-    if ([self isKindOfClass:NSClassFromString(@"DVTFindBarControllerContentView")]) {
-        [[NSColor colorWithSRGBRed:0.95f green:0.95f blue:0.95f alpha:1.0f] setFill];
-        NSRectFill(dirtyRect);
-    }
-
-    [self zen_drawRect:dirtyRect];
-}
-
-- (void)zen_setFrame:(NSRect)frame
-{
-    if ([self isKindOfClass:NSClassFromString(@"IDENavBar")]) {
-        NSView *containerView = self.superview;
-        DVTBorderedView *borderedView;
-
-        for (id view in containerView.subviews) {
-            if ([view isKindOfClass:NSClassFromString(@"DVTBorderedView")]) {
-                borderedView = view;
-                break;
-            }
-        }
-
-        BOOL shouldResize = (([containerView.subviews count] < 4) &&
-                             (containerView.frame.size.height >= borderedView.frame.size.height));
-        if (shouldResize) {
-            CGFloat newHeight = 2.0f;
-            NSRect newFrame = containerView.frame;
-            newFrame.origin.y -= newHeight;
-            [borderedView zen_setFrame:newFrame];
-        }
-    }
-
-    [self zen_setFrame:frame];
-}
-
-@end
-
 @implementation NSWindowController (ZEN)
 
 - (NSSize)zen_windowWillResize:(NSWindow *)sender
@@ -198,9 +158,6 @@ static WindowFlex *sharedPlugin;
                                       withSelector:@selector(zen_minSize)];
         [NSToolbarItem zen_swizzleInstanceSelector:@selector(maxSize)
                                       withSelector:@selector(zen_maxSize)];
-
-        [NSView zen_swizzleInstanceSelector:@selector(drawRect:)
-                               withSelector:@selector(zen_drawRect:)];
     });
 }
 
