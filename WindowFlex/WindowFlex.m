@@ -167,8 +167,8 @@ static WindowFlex *sharedPlugin;
 
         [NSToolbarItem zen_swizzleInstanceSelector:@selector(minSize)
                                       withSelector:@selector(zen_minSize)];
-        [NSToolbarItem zen_swizzleInstanceSelector:@selector(maxSize)
-                                      withSelector:@selector(zen_maxSize)];
+//        [NSToolbarItem zen_swizzleInstanceSelector:@selector(maxSize)
+//                                      withSelector:@selector(zen_maxSize)];
     });
 }
 
