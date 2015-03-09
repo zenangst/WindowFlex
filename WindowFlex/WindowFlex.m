@@ -45,37 +45,6 @@ static WindowFlex *sharedPlugin;
 
 @end
 
-@implementation NSToolbarItem (ZEN)
-
-- (NSSize)zen_minSize
-{
-    NSSize size = [self zen_minSize];
-
-    Class activityClass = NSClassFromString(@"_IDEActivityViewControllerToolbarItem");
-
-    if ([self isKindOfClass:activityClass]) {
-        self.visibilityPriority = NSToolbarItemVisibilityPriorityUser;
-        size.width = ZENToolbarDefaultMinSize;
-    }
-
-    return size;
-}
-
-- (NSSize)zen_maxSize
-{
-    NSSize size = [self zen_maxSize];
-
-    Class activityClass = NSClassFromString(@"_IDEActivityViewControllerToolbarItem");
-
-    if ([self isKindOfClass:activityClass]) {
-        size.width = ZENToolbarMaxSize;
-    }
-
-    return size;
-}
-
-@end
-
 @interface WindowFlex()
 
 @property (nonatomic, strong, readwrite) NSBundle *bundle;
@@ -127,16 +96,6 @@ static WindowFlex *sharedPlugin;
         [self swizzleClass:IDEWorkspaceWindowControllerClass
           originalSelector:@selector(windowWillResize:toSize:)
           swizzledSelector:@selector(zen_windowWillResize:toSize:)
-            instanceMethod:YES];
-
-        [self swizzleClass:[NSToolbarItem class]
-          originalSelector:@selector(minSize)
-          swizzledSelector:@selector(zen_minSize)
-            instanceMethod:YES];
-
-        [self swizzleClass:[NSToolbarItem class]
-          originalSelector:@selector(maxSize)
-          swizzledSelector:@selector(zen_maxSize)
             instanceMethod:YES];
     });
 }
