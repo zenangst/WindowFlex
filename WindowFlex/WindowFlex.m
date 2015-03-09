@@ -80,36 +80,51 @@ static WindowFlex *sharedPlugin;
 
 @end
 
-@implementation NSToolbarItem (ZEN)
+@implementation NSView (ZEN)
 
-- (NSSize)zen_minSize
+- (void)zen_drawRect:(NSRect)dirtyRect
 {
-    NSSize size = [self zen_minSize];
-
-    Class activityClass = NSClassFromString(@"_IDEActivityViewControllerToolbarItem");
-
-    if ([self isKindOfClass:activityClass]) {
-        self.visibilityPriority = NSToolbarItemVisibilityPriorityUser;
-        size.width = ZENToolbarDefaultMinSize;
+    if ([self isKindOfClass:NSClassFromString(@"DVTFindBarControllerContentView")]) {
+        [[NSColor colorWithSRGBRed:0.95f green:0.95f blue:0.95f alpha:1.0f] setFill];
+        NSRectFill(dirtyRect);
     }
 
-    return size;
+    [self zen_drawRect:dirtyRect];
 }
 
-- (NSSize)zen_maxSize
+- (void)zen_setFrame:(NSRect)frame
 {
-    NSSize size = [self zen_maxSize];
+    if ([self isKindOfClass:NSClassFromString(@"IDENavBar")]) {
+        NSView *containerView = self.superview;
+        DVTBorderedView *borderedView;
 
-    Class activityClass = NSClassFromString(@"_IDEActivityViewControllerToolbarItem");
+        for (id view in containerView.subviews) {
+            if ([view isKindOfClass:NSClassFromString(@"DVTBorderedView")]) {
+                borderedView = view;
+                break;
+            }
+        }
 
-    if ([self isKindOfClass:activityClass]) {
-        size.width = ZENToolbarMaxSize;
-        NSView *view = self.view;
-        view.autoresizingMask = kCALayerWidthSizable;
-        view.autoresizesSubviews = YES;
+        BOOL shouldResize = (([containerView.subviews count] < 4) &&
+                             (containerView.frame.size.height >= borderedView.frame.size.height));
+        if (shouldResize) {
+            [containerView addSubview:borderedView];
+            NSRect newFrame = containerView.frame;
+            [borderedView zen_setFrame:newFrame];
+
+            frame.origin.y -= frame.size.height - 1;
+        }
     }
 
-    return size;
+    if ([self isKindOfClass:NSClassFromString(@"DVTBorderedView")]) {
+
+    }
+
+    if ([self isKindOfClass:NSClassFromString(@"DVTSplitView")]) {
+        
+    }
+
+    [self zen_setFrame:frame];
 }
 
 @end
@@ -165,10 +180,10 @@ static WindowFlex *sharedPlugin;
         [IDEWorkspaceWindowControllerClass zen_swizzleInstanceSelector:@selector(windowWillResize:toSize:)
                                                           withSelector:@selector(zen_windowWillResize:toSize:)];
 
-        [NSToolbarItem zen_swizzleInstanceSelector:@selector(minSize)
-                                      withSelector:@selector(zen_minSize)];
-//        [NSToolbarItem zen_swizzleInstanceSelector:@selector(maxSize)
-//                                      withSelector:@selector(zen_maxSize)];
+        [NSView zen_swizzleInstanceSelector:@selector(setFrame:)
+                               withSelector:@selector(zen_setFrame:)];
+        [NSView zen_swizzleInstanceSelector:@selector(drawRect:)
+                               withSelector:@selector(zen_drawRect:)];
     });
 }
 
