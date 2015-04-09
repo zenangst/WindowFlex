@@ -72,10 +72,11 @@ static WindowFlex *sharedPlugin;
     }];
 
     if (removedItems && self.items.count == 3) {
-        [self insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier atIndex:0];
+        [self insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier
+                                   atIndex:0];
     }
 
-    return YES;
+    return NO;
 }
 
 @end
@@ -85,7 +86,10 @@ static WindowFlex *sharedPlugin;
 - (void)zen_drawRect:(NSRect)dirtyRect
 {
     if ([self isKindOfClass:NSClassFromString(@"DVTFindBarControllerContentView")]) {
-        [[NSColor colorWithSRGBRed:0.95f green:0.95f blue:0.95f alpha:1.0f] setFill];
+        [[NSColor colorWithSRGBRed:0.95f
+                             green:0.95f
+                              blue:0.95f
+                             alpha:1.0f] setFill];
         NSRectFill(dirtyRect);
     }
 
@@ -116,13 +120,9 @@ static WindowFlex *sharedPlugin;
         }
     }
 
-    if ([self isKindOfClass:NSClassFromString(@"DVTBorderedView")]) {
+    if ([self isKindOfClass:NSClassFromString(@"DVTBorderedView")]) {}
 
-    }
-
-    if ([self isKindOfClass:NSClassFromString(@"DVTSplitView")]) {
-        
-    }
+    if ([self isKindOfClass:NSClassFromString(@"DVTSplitView")]) {}
 
     [self zen_setFrame:frame];
 }
