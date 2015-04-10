@@ -87,9 +87,9 @@ static WindowFlex *sharedPlugin;
 - (void)zen_drawRect:(NSRect)dirtyRect
 {
     if ([self isKindOfClass:NSClassFromString(@"DVTFindBarControllerContentView")]) {
-        [[NSColor colorWithSRGBRed:0.95f
-                             green:0.95f
-                              blue:0.95f
+        [[NSColor colorWithSRGBRed:0.847f
+                             green:0.847f
+                              blue:0.847f
                              alpha:1.0f] setFill];
         NSRectFill(dirtyRect);
     }
