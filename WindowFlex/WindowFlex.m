@@ -12,7 +12,7 @@
 CGFloat ZENToolbarMinSize = 300.0f;
 CGFloat ZENToolbarMaxSize = 2000.0f;
 CGFloat ZENToolbarDefaultMinSize = 320.0f;
-CGFloat ZENWindowSizeMinimumWidth = 608.0f;
+CGFloat ZENWindowSizeMinimumWidth = 665.0f;
 CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
 static WindowFlex *sharedPlugin;
@@ -121,7 +121,7 @@ static WindowFlex *sharedPlugin;
     }
 
     if ([self isKindOfClass:NSClassFromString(@"DVTSplitView")]) {
-        
+
     }
 
     [self zen_setFrame:frame];
