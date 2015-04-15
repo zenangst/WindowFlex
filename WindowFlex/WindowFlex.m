@@ -8,6 +8,7 @@
 
 #import "WindowFlex.h"
 #import "NSObject+ZENSwizzle.h"
+#import "DVTTextSidebarView+WindowFlex.h"
 
 CGFloat ZENToolbarMinSize = 300.0f;
 CGFloat ZENToolbarMaxSize = 2000.0f;

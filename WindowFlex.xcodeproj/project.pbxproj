@@ -11,6 +11,10 @@
 		BD22D3E41A2651FC00A3DB65 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */; };
 		BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */; };
 		BDA650F01A0408F2005BBC5E /* WindowFlex.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = BDA650EF1A0408F2005BBC5E /* WindowFlex.xcscheme */; };
+		BDEEA90A1ADED09F000B70AE /* DVTTextSidebarView+WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEEA9091ADED09F000B70AE /* DVTTextSidebarView+WindowFlex.m */; };
+		BDEEA90C1ADED0D6000B70AE /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEEA90B1ADED0D6000B70AE /* DVTKit.framework */; };
+		BDEEA90E1ADED0DB000B70AE /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEEA90D1ADED0DB000B70AE /* IDEKit.framework */; };
+		BDEEA9101ADED0E6000B70AE /* DVTFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEEA90F1ADED0E6000B70AE /* DVTFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,11 @@
 		BDA650EA1A0408F2005BBC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		BDA650EE1A0408F2005BBC5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA650EF1A0408F2005BBC5E /* WindowFlex.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = WindowFlex.xcscheme; path = WindowFlex.xcodeproj/xcshareddata/xcschemes/WindowFlex.xcscheme; sourceTree = SOURCE_ROOT; };
+		BDEEA9081ADED09F000B70AE /* DVTTextSidebarView+WindowFlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DVTTextSidebarView+WindowFlex.h"; sourceTree = "<group>"; };
+		BDEEA9091ADED09F000B70AE /* DVTTextSidebarView+WindowFlex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DVTTextSidebarView+WindowFlex.m"; sourceTree = "<group>"; };
+		BDEEA90B1ADED0D6000B70AE /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework; sourceTree = "<group>"; };
+		BDEEA90D1ADED0DB000B70AE /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
+		BDEEA90F1ADED0E6000B70AE /* DVTFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTFoundation.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +43,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD22D3E41A2651FC00A3DB65 /* Cocoa.framework in Frameworks */,
+				BDEEA90E1ADED0DB000B70AE /* IDEKit.framework in Frameworks */,
+				BDEEA9101ADED0E6000B70AE /* DVTFoundation.framework in Frameworks */,
+				BDEEA90C1ADED0D6000B70AE /* DVTKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +74,9 @@
 		BDA650E71A0408F2005BBC5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BDEEA90F1ADED0E6000B70AE /* DVTFoundation.framework */,
+				BDEEA90D1ADED0DB000B70AE /* IDEKit.framework */,
+				BDEEA90B1ADED0D6000B70AE /* DVTKit.framework */,
 				BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */,
 				BDA650E81A0408F2005BBC5E /* AppKit.framework */,
 				BDA650EA1A0408F2005BBC5E /* Foundation.framework */,
@@ -77,6 +92,8 @@
 				BDA650ED1A0408F2005BBC5E /* Supporting Files */,
 				BD222DE91A26571F00A3DB65 /* WindowFlex.h */,
 				BD222DEA1A26571F00A3DB65 /* WindowFlex.m */,
+				BDEEA9081ADED09F000B70AE /* DVTTextSidebarView+WindowFlex.h */,
+				BDEEA9091ADED09F000B70AE /* DVTTextSidebarView+WindowFlex.m */,
 			);
 			path = WindowFlex;
 			sourceTree = "<group>";
@@ -158,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD222DEB1A26571F00A3DB65 /* WindowFlex.m in Sources */,
+				BDEEA90A1ADED09F000B70AE /* DVTTextSidebarView+WindowFlex.m in Sources */,
 				BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +261,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
 				);
 				INFOPLIST_FILE = WindowFlex/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
@@ -261,6 +280,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Frameworks",
+					"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/SharedFrameworks",
 				);
 				INFOPLIST_FILE = WindowFlex/Info.plist;
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
