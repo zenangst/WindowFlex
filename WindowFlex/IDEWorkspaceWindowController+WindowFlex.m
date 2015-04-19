@@ -1,18 +1,18 @@
 //
-//  NSWindowController+WindowFlex.m
+//  IDEWorkspaceWindowController+WindowFlex.m
 //  WindowFlex
 //
 //  Created by Christoffer Winterkvist on 19/04/15.
 //  Copyright (c) 2015 zenangst. All rights reserved.
 //
 
-#import "NSWindowController+WindowFlex.h"
+#import "IDEWorkspaceWindowController+WindowFlex.h"
 #import <objc/objc-runtime.h>
 
 CGFloat ZENWindowSizeMinimumWidth = 608.0f;
 CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
-@implementation NSWindowController (WindowFlex)
+@implementation IDEWorkspaceWindowController (WindowFlex)
 
 + (void)load {
     Method original, swizzle;
@@ -31,7 +31,5 @@ CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
     return frameSize;
 }
-
-
 
 @end
