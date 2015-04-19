@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		BD222DEB1A26571F00A3DB65 /* WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BD222DEA1A26571F00A3DB65 /* WindowFlex.m */; };
 		BD22D3E41A2651FC00A3DB65 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */; };
-		BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */; };
+		BD9AC8CB1AE419A200F88731 /* NSView+WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9AC8CA1AE419A200F88731 /* NSView+WindowFlex.m */; };
+		BD9AC8CE1AE419E700F88731 /* NSWindowController+WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9AC8CD1AE419E700F88731 /* NSWindowController+WindowFlex.m */; };
+		BD9AC8D11AE41A0B00F88731 /* NSToolbar+WindowFlex.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9AC8D01AE41A0B00F88731 /* NSToolbar+WindowFlex.m */; };
 		BDA650F01A0408F2005BBC5E /* WindowFlex.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = BDA650EF1A0408F2005BBC5E /* WindowFlex.xcscheme */; };
 		BDEEA90C1ADED0D6000B70AE /* DVTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEEA90B1ADED0D6000B70AE /* DVTKit.framework */; };
 		BDEEA90E1ADED0DB000B70AE /* IDEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEEA90D1ADED0DB000B70AE /* IDEKit.framework */; };
@@ -22,8 +24,12 @@
 		BD22D3E31A2651FC00A3DB65 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BD61755E1A08BB8A00383A63 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		BD61755F1A08BB8A00383A63 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BD7F14951A0E8DB800739441 /* NSObject+ZENSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ZENSwizzle.h"; sourceTree = "<group>"; };
-		BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ZENSwizzle.m"; sourceTree = "<group>"; };
+		BD9AC8C91AE419A200F88731 /* NSView+WindowFlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView+WindowFlex.h"; sourceTree = "<group>"; };
+		BD9AC8CA1AE419A200F88731 /* NSView+WindowFlex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView+WindowFlex.m"; sourceTree = "<group>"; };
+		BD9AC8CC1AE419E700F88731 /* NSWindowController+WindowFlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindowController+WindowFlex.h"; sourceTree = "<group>"; };
+		BD9AC8CD1AE419E700F88731 /* NSWindowController+WindowFlex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindowController+WindowFlex.m"; sourceTree = "<group>"; };
+		BD9AC8CF1AE41A0B00F88731 /* NSToolbar+WindowFlex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSToolbar+WindowFlex.h"; sourceTree = "<group>"; };
+		BD9AC8D01AE41A0B00F88731 /* NSToolbar+WindowFlex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSToolbar+WindowFlex.m"; sourceTree = "<group>"; };
 		BDA650E51A0408F2005BBC5E /* WindowFlex.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowFlex.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA650E81A0408F2005BBC5E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		BDA650EA1A0408F2005BBC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -84,11 +90,15 @@
 		BDA650EC1A0408F2005BBC5E /* WindowFlex */ = {
 			isa = PBXGroup;
 			children = (
-				BD7F14951A0E8DB800739441 /* NSObject+ZENSwizzle.h */,
-				BD7F14961A0E8DB800739441 /* NSObject+ZENSwizzle.m */,
 				BDA650ED1A0408F2005BBC5E /* Supporting Files */,
 				BD222DE91A26571F00A3DB65 /* WindowFlex.h */,
 				BD222DEA1A26571F00A3DB65 /* WindowFlex.m */,
+				BD9AC8C91AE419A200F88731 /* NSView+WindowFlex.h */,
+				BD9AC8CA1AE419A200F88731 /* NSView+WindowFlex.m */,
+				BD9AC8CC1AE419E700F88731 /* NSWindowController+WindowFlex.h */,
+				BD9AC8CD1AE419E700F88731 /* NSWindowController+WindowFlex.m */,
+				BD9AC8CF1AE41A0B00F88731 /* NSToolbar+WindowFlex.h */,
+				BD9AC8D01AE41A0B00F88731 /* NSToolbar+WindowFlex.m */,
 			);
 			path = WindowFlex;
 			sourceTree = "<group>";
@@ -169,8 +179,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9AC8CB1AE419A200F88731 /* NSView+WindowFlex.m in Sources */,
+				BD9AC8CE1AE419E700F88731 /* NSWindowController+WindowFlex.m in Sources */,
 				BD222DEB1A26571F00A3DB65 /* WindowFlex.m in Sources */,
-				BD7F14971A0E8DB800739441 /* NSObject+ZENSwizzle.m in Sources */,
+				BD9AC8D11AE41A0B00F88731 /* NSToolbar+WindowFlex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
