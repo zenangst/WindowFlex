@@ -33,7 +33,7 @@
 		BDA650E51A0408F2005BBC5E /* WindowFlex.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WindowFlex.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDA650E81A0408F2005BBC5E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		BDA650EA1A0408F2005BBC5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		BDA650EE1A0408F2005BBC5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDA650EE1A0408F2005BBC5E /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDA650EF1A0408F2005BBC5E /* WindowFlex.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = WindowFlex.xcscheme; path = WindowFlex.xcodeproj/xcshareddata/xcschemes/WindowFlex.xcscheme; sourceTree = SOURCE_ROOT; };
 		BDEEA90B1ADED0D6000B70AE /* DVTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVTKit.framework; path = ../../../../Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework; sourceTree = "<group>"; };
 		BDEEA90D1ADED0DB000B70AE /* IDEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IDEKit.framework; path = ../../../../Applications/Xcode.app/Contents/Frameworks/IDEKit.framework; sourceTree = "<group>"; };
