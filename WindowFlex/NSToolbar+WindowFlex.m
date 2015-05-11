@@ -9,6 +9,8 @@
 #import "NSToolbar+WindowFlex.h"
 #import <objc/objc-runtime.h>
 
+static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
+
 @implementation NSToolbar (WindowFlex)
 
 - (BOOL)allowsUserCustomization {
@@ -20,6 +22,9 @@
 }
 
 - (BOOL)showsBaselineSeparator {
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kWindowFlexType]) {
+
     NSArray *itemsToDelete = @[@"Xcode.IDEKit.CustomToolbarItem.Run",
                                @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
                                @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
@@ -37,6 +42,8 @@
     if (removedItems && self.items.count == 3) {
         [self insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier
                                    atIndex:0];
+    }
+
     }
 
     return NO;
