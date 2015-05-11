@@ -23,8 +23,7 @@
     NSArray *itemsToDelete = @[@"Xcode.IDEKit.CustomToolbarItem.Run",
                                @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
                                @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
-                               @"Xcode.IDEKit.CustomToolbarItem.Views"
-                               ];
+                               @"Xcode.IDEKit.CustomToolbarItem.Views"];
 
     __block BOOL removedItems = NO;
     [self.items enumerateObjectsUsingBlock:^(NSToolbarItem *toolbarItem, NSUInteger idx, BOOL *stop) {
