@@ -12,7 +12,7 @@ static WindowFlex *sharedPlugin;
 
 @interface WindowFlex()
 
-@property (nonatomic, strong, readwrite) NSBundle *bundle;
+@property (nonatomic, readwrite) NSBundle *bundle;
 
 @end
 
