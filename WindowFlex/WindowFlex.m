@@ -26,7 +26,7 @@ static WindowFlex *sharedPlugin;
     if (![currentApplicationName isEqual:@"Xcode"]) return;
 
     dispatch_once(&onceToken, ^{
-        sharedPlugin = [[self alloc] initWithBundle:plugin];
+        sharedPlugin = [[self alloc] init];
     });
 }
 
@@ -34,24 +34,32 @@ static WindowFlex *sharedPlugin;
     return sharedPlugin;
 }
 
-- (id)initWithBundle:(NSBundle *)plugin {
+- (instancetype)init {
     self = [super init];
     if (!self) return nil;
 
-    self.bundle = plugin;
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidFinishLaunching:)
+                                                 name:NSApplicationDidFinishLaunchingNotification
+                                               object:nil];
 
-    NSMenuItem *editMenuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
+    return self;
+}
 
-    if (editMenuItem) {
+- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+
+    NSMenuItem *windowMenuItem = [[NSApp mainMenu] itemWithTitle:@"Window"];
+
+    if (windowMenuItem) {
         NSMenu *pluginMenu = [[NSMenu alloc] initWithTitle:@"Window Flex"];
-        [[editMenuItem submenu] addItem:[NSMenuItem separatorItem]];
+        [[windowMenuItem submenu] addItem:[NSMenuItem separatorItem]];
 
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSInteger state = [userDefaults objectForKey:kWindowFlexType] ? [[userDefaults objectForKey:kWindowFlexType] integerValue] : 1;
 
         _flexTypeMenuItem = [[NSMenuItem alloc] initWithTitle:@"Clean Flex"
-                                                      action:@selector(toggleFlex)
-                                               keyEquivalent:@""];
+                                                       action:@selector(toggleFlex)
+                                                keyEquivalent:@""];
         _flexTypeMenuItem.state = state;
         _flexTypeMenuItem.target = self;
 
@@ -64,11 +72,10 @@ static WindowFlex *sharedPlugin;
                                                          keyEquivalent:@""];
         pluginMenuItem.submenu = pluginMenu;
 
-        [[editMenuItem submenu] addItem:pluginMenuItem];
+        [[windowMenuItem submenu] addItem:pluginMenuItem];
     }
-
-    return self;
 }
+
 
 - (void)toggleFlex {
     self.flexTypeMenuItem.state = (self.flexTypeMenuItem.state == 1) ? 0 : 1;
