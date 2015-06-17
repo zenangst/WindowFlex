@@ -46,7 +46,13 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 
     }
 
-    return NO;
+    NSURL *receiptURL =[[NSBundle mainBundle].bundleURL URLByAppendingPathComponent:@"Contents/_MASReceipt/receipt"];
+    BOOL isAppStore = [receiptURL checkResourceIsReachableAndReturnError:nil];
+    if (isAppStore) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end
