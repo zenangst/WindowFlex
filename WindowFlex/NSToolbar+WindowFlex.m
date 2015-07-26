@@ -28,6 +28,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
     NSArray *itemsToDelete = @[@"Xcode.IDEKit.CustomToolbarItem.Run",
                                @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
                                @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                               @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
                                @"Xcode.IDEKit.CustomToolbarItem.Views"];
 
     __block BOOL removedItems = NO;
@@ -39,7 +40,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
         }
     }];
 
-    if (removedItems && self.items.count == 3) {
+    if (removedItems && self.items.count == 2) {
         [self insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier
                                    atIndex:0];
     }
