@@ -31,29 +31,25 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
                                @"Xcode.IDEKit.CustomToolbarItem.Views"];
 
-    __block BOOL removedItems = NO;
+    __block BOOL shouldConfigureToolbar = NO;
     [self.items enumerateObjectsUsingBlock:^(NSToolbarItem *toolbarItem, NSUInteger idx, BOOL *stop) {
         if ([itemsToDelete containsObject:toolbarItem.itemIdentifier]) {
-            [self removeItemAtIndex:idx];
-            removedItems = YES;
+            shouldConfigureToolbar = YES;
             *stop = YES;
         }
     }];
 
-    if (removedItems && self.items.count == 2) {
-        [self insertItemWithItemIdentifier:NSToolbarFlexibleSpaceItemIdentifier
-                                   atIndex:0];
-    }
+      if (shouldConfigureToolbar == true || self.items.count == 0) {
+        NSMutableDictionary *mdict = [self.configurationDictionary mutableCopy];
+        mdict[@"TB Item Identifiers"] = @[@"NSToolbarFlexibleSpaceItem",
+                                         @"Xcode.IDEKit.CustomToolbarItem.Activity",
+                                         @"NSToolbarFlexibleSpaceItem"];
+        [self setConfigurationFromDictionary:[mdict copy]];
+      }
 
     }
 
-    NSURL *receiptURL =[[NSBundle mainBundle].bundleURL URLByAppendingPathComponent:@"Contents/_MASReceipt/receipt"];
-    BOOL isAppStore = [receiptURL checkResourceIsReachableAndReturnError:nil];
-    if (isAppStore) {
-        return NO;
-    } else {
-        return YES;
-    }
+  return YES;
 }
 
 @end
