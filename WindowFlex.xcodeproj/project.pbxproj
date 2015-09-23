@@ -64,7 +64,9 @@
 				BDA650E71A0408F2005BBC5E /* Frameworks */,
 				BDA650E61A0408F2005BBC5E /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		BDA650E61A0408F2005BBC5E /* Products */ = {
 			isa = PBXGroup;

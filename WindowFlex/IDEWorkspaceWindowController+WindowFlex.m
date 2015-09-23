@@ -9,7 +9,7 @@
 #import "IDEWorkspaceWindowController+WindowFlex.h"
 #import <objc/objc-runtime.h>
 
-CGFloat ZENWindowSizeMinimumWidth = 685.0f;
+CGFloat ZENWindowSizeMinimumWidth = 680.0f;
 CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
 @implementation IDEWorkspaceWindowController (WindowFlex)
