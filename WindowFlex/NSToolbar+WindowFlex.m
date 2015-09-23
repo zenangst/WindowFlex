@@ -25,9 +25,9 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kWindowFlexType]) {
 
-    NSArray *itemsToDelete = @[@"Xcode.IDEKit.CustomToolbarItem.Run",
-                               @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
-                               @"Xcode.IDEKit.CustomToolbarItem.Views"
+    NSArray *itemsToDelete = @[
+                               @"Xcode.IDEKit.CustomToolbarItem.Run",
+                               @"Xcode.IDEKit.CustomToolbarItem.MultiStop"
                                ];
 
     __block BOOL shouldConfigureToolbar = NO;
@@ -40,11 +40,13 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 
       if (shouldConfigureToolbar == true || self.items.count == 0) {
         NSMutableDictionary *mdict = [self.configurationDictionary mutableCopy];
-        mdict[@"TB Item Identifiers"] = @[@"NSToolbarFlexibleSpaceItem",
+        mdict[@"TB Item Identifiers"] = @[
                                           @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
+                                          @"NSToolbarFlexibleSpaceItem",
                                           @"Xcode.IDEKit.CustomToolbarItem.Activity",
+                                          @"NSToolbarFlexibleSpaceItem",
                                           @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
-                                          @"NSToolbarFlexibleSpaceItem"
+                                          @"Xcode.IDEKit.CustomToolbarItem.Views",
                                           ];
         [self setConfigurationFromDictionary:[mdict copy]];
       }
