@@ -23,12 +23,56 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 
 - (BOOL)showsBaselineSeparator {
 
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kWindowFlexType]) {
+    NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
 
-        NSArray *itemsToDelete = @[
-                                   @"Xcode.IDEKit.CustomToolbarItem.Run",
-                                   @"Xcode.IDEKit.CustomToolbarItem.MultiStop"
-                                   ];
+    if (mainWindow && [[NSUserDefaults standardUserDefaults] boolForKey:kWindowFlexType]) {
+
+        NSArray *itemsToDelete;
+        NSArray *itemsToAdd;
+
+
+        if (mainWindow.frame.size.width <  680) {
+            itemsToDelete = @[
+                              @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
+                              @"Xcode.IDEKit.CustomToolbarItem.Run",
+                              @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
+                              @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                              @"Xcode.IDEKit.CustomToolbarItem.Views",
+                              ];
+
+            itemsToAdd = @[
+                           @"NSToolbarFlexibleSpaceItem",
+                           @"Xcode.IDEKit.CustomToolbarItem.Activity",
+                           @"NSToolbarFlexibleSpaceItem",
+                           ];
+        } else if (mainWindow.frame.size.width >  1000) {
+            itemsToDelete = @[@""];
+            itemsToAdd = @[
+                           @"Xcode.IDEKit.CustomToolbarItem.Run",
+                           @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
+                           @"NSToolbarFlexibleSpaceItem",
+                           @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
+                           @"Xcode.IDEKit.CustomToolbarItem.Activity",
+                           @"NSToolbarFlexibleSpaceItem",
+                           @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                           @"Xcode.IDEKit.CustomToolbarItem.Views",
+                           ];
+        } else {
+            itemsToDelete = @[
+                              @"Xcode.IDEKit.CustomToolbarItem.Run",
+                              @"Xcode.IDEKit.CustomToolbarItem.MultiStop"
+                              ];
+            itemsToAdd = @[
+                           @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
+                           @"NSToolbarFlexibleSpaceItem",
+                           @"Xcode.IDEKit.CustomToolbarItem.Activity",
+                           @"NSToolbarFlexibleSpaceItem",
+                           @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                           @"Xcode.IDEKit.CustomToolbarItem.Views",
+                           ];
+        }
+
+
 
         __block BOOL shouldConfigureToolbar = NO;
         [self.items enumerateObjectsUsingBlock:^(NSToolbarItem *toolbarItem, NSUInteger idx, BOOL *stop) {
@@ -38,17 +82,10 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
             }
         }];
 
-        if (shouldConfigureToolbar == true || self.items.count == 0) {
-            NSMutableDictionary *mdict = [self.configurationDictionary mutableCopy];
-            mdict[@"TB Item Identifiers"] = @[
-                                              @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
-                                              @"NSToolbarFlexibleSpaceItem",
-                                              @"Xcode.IDEKit.CustomToolbarItem.Activity",
-                                              @"NSToolbarFlexibleSpaceItem",
-                                              @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
-                                              @"Xcode.IDEKit.CustomToolbarItem.Views",
-                                              ];
-            [self setConfigurationFromDictionary:[mdict copy]];
+        if (shouldConfigureToolbar == true || self.items.count != itemsToAdd.count) {
+            NSMutableDictionary *toolbarItems = [self.configurationDictionary mutableCopy];
+            toolbarItems[@"TB Item Identifiers"] = itemsToAdd;
+            [self setConfigurationFromDictionary:[toolbarItems copy]];
         }
     }
     
