@@ -62,9 +62,10 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                @"NSToolbarFlexibleSpaceItem",
                                ];
             } else if (mainWindow.frame.size.width >  1000) {
-                itemsToDelete = @[@"Xcode.IDEKit.CustomToolbarItem.Run",
-                                  @"Xcode.IDEKit.CustomToolbarItem.MultiStop"];
+                itemsToDelete = @[];
                 itemsToAdd = @[
+                               @"Xcode.IDEKit.CustomToolbarItem.Run",
+                               @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
                                @"NSToolbarFlexibleSpaceItem",
                                @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
                                @"Xcode.IDEKit.CustomToolbarItem.Activity",
