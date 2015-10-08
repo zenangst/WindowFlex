@@ -33,7 +33,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
         NSMutableDictionary *toolbarItems = [self.configurationDictionary mutableCopy];
 
         if (self.configurationDictionary[@"TB Item Identifiers"]) {
-            if (mainWindow.frame.size.width <  680) {
+            if (mainWindow.frame.size.width <  820) {
                 itemsToDelete = @[
                                   @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
                                   @"Xcode.IDEKit.CustomToolbarItem.Run",
@@ -47,7 +47,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                @"Xcode.IDEKit.CustomToolbarItem.Activity",
                                @"NSToolbarFlexibleSpaceItem",
                                ];
-            } else if (mainWindow.frame.size.width <  880) {
+            } else if (mainWindow.frame.size.width <  900) {
                 itemsToDelete = @[
                                   @"Xcode.IDEKit.CustomToolbarItem.Run",
                                   @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
@@ -61,7 +61,21 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                @"Xcode.IDEKit.CustomToolbarItem.Activity",
                                @"NSToolbarFlexibleSpaceItem",
                                ];
-            } else if (mainWindow.frame.size.width >  1000) {
+            } else if (mainWindow.frame.size.width <  950) {
+                itemsToDelete = @[
+                                  @"Xcode.IDEKit.CustomToolbarItem.Run",
+                                  @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
+                                  @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                                  ];
+
+                itemsToAdd = @[
+                               @"NSToolbarFlexibleSpaceItem",
+                               @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
+                               @"Xcode.IDEKit.CustomToolbarItem.Activity",
+                               @"NSToolbarFlexibleSpaceItem",
+                               @"Xcode.IDEKit.CustomToolbarItem.Views"
+                               ];
+            } else if (mainWindow.frame.size.width >  1100) {
                 itemsToDelete = @[];
                 itemsToAdd = @[
                                @"Xcode.IDEKit.CustomToolbarItem.Run",
