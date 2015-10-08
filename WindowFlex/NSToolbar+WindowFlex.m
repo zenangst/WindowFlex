@@ -65,7 +65,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                 itemsToDelete = @[
                                   @"Xcode.IDEKit.CustomToolbarItem.Run",
                                   @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
-                                  @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                                  @"Xcode.IDEKit.CustomToolbarItem.Views"
                                   ];
 
                 itemsToAdd = @[
@@ -73,7 +73,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
                                @"Xcode.IDEKit.CustomToolbarItem.Activity",
                                @"NSToolbarFlexibleSpaceItem",
-                               @"Xcode.IDEKit.CustomToolbarItem.Views"
+                               @"Xcode.IDEKit.CustomToolbarItem.EditorMode"
                                ];
             } else if (mainWindow.frame.size.width >  1100) {
                 itemsToDelete = @[];
