@@ -25,7 +25,9 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 
     NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
 
-    if (mainWindow && [[NSUserDefaults standardUserDefaults] boolForKey:kWindowFlexType]) {
+    if (mainWindow &&
+        [mainWindow isKindOfClass:NSClassFromString(@"IDEWorkspaceWindow")] &&
+        [[NSUserDefaults standardUserDefaults] boolForKey:kWindowFlexType]) {
 
         NSArray *itemsToDelete;
         NSArray *itemsToAdd;
