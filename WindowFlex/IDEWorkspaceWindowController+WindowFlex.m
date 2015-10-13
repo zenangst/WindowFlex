@@ -21,8 +21,8 @@ CGFloat ZENWindowSizeBreakPoint = 650.0f;
     swizzle = class_getInstanceMethod(self, NSSelectorFromString(@"zen_windowWillResize:toSize:"));
     method_exchangeImplementations(original, swizzle);
 
-    original = class_getInstanceMethod(self, NSSelectorFromString(@"windowWillMove:"));
-    swizzle = class_getInstanceMethod(self, NSSelectorFromString(@"zen_windowWillMove:"));
+    original = class_getInstanceMethod(self, NSSelectorFromString(@"windowDidMove:"));
+    swizzle = class_getInstanceMethod(self, NSSelectorFromString(@"zen_windowDidMove:"));
     method_exchangeImplementations(original, swizzle);
 }
 
@@ -35,9 +35,9 @@ CGFloat ZENWindowSizeBreakPoint = 650.0f;
     return frameSize;
 }
 
-- (void)zen_windowWillMove:(NSNotification *)notification
+- (void)zen_windowDidMove:(NSNotification *)notification
 {
-    [self zen_windowWillMove:notification];
+    [self zen_windowDidMove:notification];
     [self zen_windowWillResize:[self window] toSize:[[self window] frame].size];
 }
 
