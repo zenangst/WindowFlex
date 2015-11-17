@@ -28,9 +28,9 @@ CGFloat ZENWindowSizeBreakPoint = 650.0f;
 
 - (NSSize)zen_windowWillResize:(NSWindow *)sender
                         toSize:(NSSize)frameSize {
-    if (frameSize.width <= ZENWindowSizeMinimumWidth) {
-        frameSize.width = ZENWindowSizeMinimumWidth;
-    }
+//    if (frameSize.width <= ZENWindowSizeMinimumWidth) {
+//        frameSize.width = ZENWindowSizeMinimumWidth;
+//    }
 
     return frameSize;
 }

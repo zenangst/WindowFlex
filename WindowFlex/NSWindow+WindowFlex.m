@@ -1,0 +1,28 @@
+//
+//  NSWindow+WindowFlex.m
+//  WindowFlex
+//
+//  Created by Christoffer Winterkvist on 11/17/15.
+//  Copyright © 2015 zenangst. All rights reserved.
+//
+
+#import "NSWindow+WindowFlex.h"
+#import <objc/objc-runtime.h>
+
+@implementation NSWindow (WindowFlex)
+
++ (void)load {
+    Method original, swizzle;
+
+    original = class_getInstanceMethod(self, NSSelectorFromString(@"setMinSize:"));
+    swizzle = class_getInstanceMethod(self, NSSelectorFromString(@"zen_setMinSize:"));
+    method_exchangeImplementations(original, swizzle);
+}
+
+- (void)zen_setMinSize:(NSSize)minSize
+{
+    NSSize min = { 630, 320 };
+    [self zen_setMinSize:min];
+}
+
+@end
