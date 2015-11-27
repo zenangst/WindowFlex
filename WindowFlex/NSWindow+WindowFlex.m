@@ -25,7 +25,7 @@
 
 - (void)zen_setMinSize:(NSSize)minSize
 {
-    NSSize min = { 630, 320 };
+    NSSize min = { 630, 480 };
     [self zen_setMinSize:min];
 }
 
