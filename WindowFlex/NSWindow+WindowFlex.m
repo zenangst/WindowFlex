@@ -35,4 +35,14 @@
     }
 }
 
+- (NSWindowTitleVisibility)titleVisibility {
+    return NSWindowTitleVisible;
+}
+
+- (nullable NSAppearance *)appearance {
+    [self.contentView setWantsLayer:YES];
+    return [NSAppearance appearanceNamed:NSAppearanceNameVibrantLight];
+}
+
+
 @end
