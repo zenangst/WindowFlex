@@ -36,7 +36,7 @@
 }
 
 - (NSWindowTitleVisibility)titleVisibility {
-    return NSWindowTitleVisible;
+    return NSWindowTitleHidden;
 }
 
 @end

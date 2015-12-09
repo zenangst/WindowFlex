@@ -25,6 +25,11 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
     return YES;
 }
 
+- (void)setVisible:(BOOL)visible
+{
+    visible = true;
+}
+
 - (BOOL)showsBaselineSeparator {
 
     NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
@@ -38,7 +43,30 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 
         NSMutableDictionary *toolbarItems = [self.configurationDictionary mutableCopy];
 
-        if ([[self.configurationDictionary[@"TB Default Item Identifiers"] mutableCopy] count] > 6) {
+        if ([[self.configurationDictionary[@"TB Default Item Identifiers"] mutableCopy] count] == 0) {
+            itemsToDelete = @[
+                              @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
+                              @"Xcode.IDEKit.CustomToolbarItem.Run",
+                              @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
+                              @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                              @"Xcode.IDEKit.CustomToolbarItem.Views",
+                              ];
+
+            itemsToAdd = @[];
+
+            __block BOOL shouldConfigureToolbar = NO;
+            [self.items enumerateObjectsUsingBlock:^(NSToolbarItem *toolbarItem, NSUInteger idx, BOOL *stop) {
+                if ([itemsToDelete containsObject:toolbarItem.itemIdentifier]) {
+                    shouldConfigureToolbar = YES;
+                    *stop = YES;
+                }
+            }];
+
+            if (shouldConfigureToolbar == true || self.items.count != itemsToAdd.count) {
+                toolbarItems[@"TB Item Identifiers"] = itemsToAdd;
+                [self setConfigurationFromDictionary:[toolbarItems copy]];
+            }
+        } else if ([[self.configurationDictionary[@"TB Default Item Identifiers"] mutableCopy] count] > 6) {
             if (self.configurationDictionary[@"TB Item Identifiers"]) {
 
                 itemsToDelete = @[
