@@ -31,8 +31,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 }
 
 - (BOOL)showsBaselineSeparator {
-
-    if (![self.identifier hasPrefix:@"Xcode.IDEKit.ToolbarDefinition.Workspace"]) {
+    if (![self.identifier hasPrefix:@"Xcode.IDEKit.ToolbarDefinition"]) {
       return YES;
     }
 
