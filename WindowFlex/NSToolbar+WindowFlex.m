@@ -18,7 +18,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 }
 
 - (BOOL)autosavesConfiguration {
-    return YES;
+    return NO;
 }
 
 - (BOOL)visible {
@@ -31,6 +31,10 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 }
 
 - (BOOL)showsBaselineSeparator {
+
+    if (![self.identifier hasPrefix:@"Xcode.IDEKit.ToolbarDefinition.Workspace"]) {
+      return YES;
+    }
 
     NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
 
@@ -164,7 +168,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
         }
     }
 
-    return YES;
+    return NO;
 }
 
 @end
