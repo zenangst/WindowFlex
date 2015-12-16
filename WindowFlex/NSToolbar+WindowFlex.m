@@ -34,6 +34,10 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
     if (![self.identifier hasPrefix:@"Xcode.IDEKit.ToolbarDefinition"]) {
       return YES;
     }
+    
+    if (self.visible) {
+        [self setVisible:NO];
+    }
 
     NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
 
@@ -148,7 +152,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                         *stop = YES;
                     }
                 }];
-                
+
                 if (shouldConfigureToolbar == true || self.items.count != itemsToAdd.count) {
                     toolbarItems[@"TB Item Identifiers"] = itemsToAdd;
                     [self setConfigurationFromDictionary:[toolbarItems copy]];
