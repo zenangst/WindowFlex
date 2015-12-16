@@ -35,10 +35,6 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
       return YES;
     }
 
-    if (self.visible) {
-        [self setVisible:NO];
-    }
-
     NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
 
     if (mainWindow &&
