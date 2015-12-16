@@ -43,17 +43,17 @@
         BOOL shouldResize = (([containerView.subviews count] < 4) &&
                              (containerView.frame.size.height >= borderedView.frame.size.height));
         if (shouldResize) {
-            [containerView addSubview:borderedView];
-            NSRect newFrame = containerView.frame;
-            newFrame.size.height -= 24;
-            [borderedView zen_setFrame:newFrame];
-            frame.origin.y = newFrame.size.height;
-            frame.size.height = 24;
-
 //            [containerView addSubview:borderedView];
 //            NSRect newFrame = containerView.frame;
+//            newFrame.size.height -= 24;
 //            [borderedView zen_setFrame:newFrame];
-//            frame.origin.y = frame.size.height;
+//            frame.origin.y = newFrame.size.height;
+//            frame.size.height = 24;
+
+            [containerView addSubview:borderedView];
+            NSRect newFrame = containerView.frame;
+            [borderedView setFrame:newFrame];
+            frame.origin.y = newFrame.origin.y;
         }
     }
 
