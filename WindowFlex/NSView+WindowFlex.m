@@ -46,7 +46,7 @@
             [containerView addSubview:borderedView];
             NSRect newFrame = containerView.frame;
             [borderedView setFrame:newFrame];
-            frame.origin.y = containerView.frame.size.height - frame.size.height * 2;
+            frame.origin.y = containerView.frame.size.height - frame.size.height * 3;
         }
     }
 
