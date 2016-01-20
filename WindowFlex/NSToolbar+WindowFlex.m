@@ -18,10 +18,22 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 }
 
 - (BOOL)autosavesConfiguration {
+    return NO;
+}
+
+- (BOOL)visible {
     return YES;
 }
 
+- (void)setVisible:(BOOL)visible
+{
+    visible = true;
+}
+
 - (BOOL)showsBaselineSeparator {
+    if (![self.identifier hasPrefix:@"Xcode.IDEKit.ToolbarDefinition"]) {
+      return YES;
+    }
 
     NSWindow *mainWindow = [[NSApplication sharedApplication] mainWindow];
 
@@ -34,9 +46,33 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
 
         NSMutableDictionary *toolbarItems = [self.configurationDictionary mutableCopy];
 
-        if ([[self.configurationDictionary[@"TB Default Item Identifiers"] mutableCopy] count] > 6) {
+        if ([[self.configurationDictionary[@"TB Default Item Identifiers"] mutableCopy] count] == 0) {
+            itemsToDelete = @[
+                              @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
+                              @"Xcode.IDEKit.CustomToolbarItem.Run",
+                              @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
+                              @"Xcode.IDEKit.CustomToolbarItem.EditorMode",
+                              @"Xcode.IDEKit.CustomToolbarItem.Views",
+                              ];
+
+            itemsToAdd = @[];
+
+            __block BOOL shouldConfigureToolbar = NO;
+            [self.items enumerateObjectsUsingBlock:^(NSToolbarItem *toolbarItem, NSUInteger idx, BOOL *stop) {
+                if ([itemsToDelete containsObject:toolbarItem.itemIdentifier]) {
+                    shouldConfigureToolbar = YES;
+                    *stop = YES;
+                }
+            }];
+
+            if (shouldConfigureToolbar == true || self.items.count != itemsToAdd.count) {
+                toolbarItems[@"TB Item Identifiers"] = itemsToAdd;
+                [self setConfigurationFromDictionary:[toolbarItems copy]];
+            }
+        } else if ([[self.configurationDictionary[@"TB Default Item Identifiers"] mutableCopy] count] > 6) {
             if (self.configurationDictionary[@"TB Item Identifiers"]) {
-                if (mainWindow.frame.size.width <  820) {
+
+                if (mainWindow.frame.size.width <  720) {
                     itemsToDelete = @[
                                       @"Xcode.IDEKit.CustomToolbarItem.ActiveScheme",
                                       @"Xcode.IDEKit.CustomToolbarItem.Run",
@@ -50,7 +86,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                    @"Xcode.IDEKit.CustomToolbarItem.Activity",
                                    @"NSToolbarFlexibleSpaceItem",
                                    ];
-                } else if (mainWindow.frame.size.width <  900) {
+                } else if (mainWindow.frame.size.width <  880) {
                     itemsToDelete = @[
                                       @"Xcode.IDEKit.CustomToolbarItem.Run",
                                       @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
@@ -64,7 +100,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                    @"Xcode.IDEKit.CustomToolbarItem.Activity",
                                    @"NSToolbarFlexibleSpaceItem",
                                    ];
-                } else if (mainWindow.frame.size.width <  950) {
+                } else if (mainWindow.frame.size.width <  980) {
                     itemsToDelete = @[
                                       @"Xcode.IDEKit.CustomToolbarItem.Run",
                                       @"Xcode.IDEKit.CustomToolbarItem.MultiStop",
@@ -78,7 +114,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                    @"NSToolbarFlexibleSpaceItem",
                                    @"Xcode.IDEKit.CustomToolbarItem.EditorMode"
                                    ];
-                } else if (mainWindow.frame.size.width >  1100) {
+                } else if (mainWindow.frame.size.width >  1200) {
                     itemsToDelete = @[];
                     itemsToAdd = @[
                                    @"Xcode.IDEKit.CustomToolbarItem.Run",
@@ -105,8 +141,6 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                                    ];
                 }
 
-
-
                 __block BOOL shouldConfigureToolbar = NO;
                 [self.items enumerateObjectsUsingBlock:^(NSToolbarItem *toolbarItem, NSUInteger idx, BOOL *stop) {
                     if ([itemsToDelete containsObject:toolbarItem.itemIdentifier]) {
@@ -114,7 +148,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
                         *stop = YES;
                     }
                 }];
-                
+
                 if (shouldConfigureToolbar == true || self.items.count != itemsToAdd.count) {
                     toolbarItems[@"TB Item Identifiers"] = itemsToAdd;
                     [self setConfigurationFromDictionary:[toolbarItems copy]];
@@ -123,7 +157,7 @@ static NSString *const kWindowFlexType = @"WindowFlexTypeWindowFlexType";
         }
     }
 
-    return YES;
+    return NO;
 }
 
 @end

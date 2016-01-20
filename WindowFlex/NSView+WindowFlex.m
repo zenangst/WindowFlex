@@ -45,9 +45,8 @@
         if (shouldResize) {
             [containerView addSubview:borderedView];
             NSRect newFrame = containerView.frame;
-            [borderedView zen_setFrame:newFrame];
-
-            frame.origin.y -= frame.size.height - 1;
+            [borderedView setFrame:newFrame];
+            frame.origin.y = containerView.frame.size.height - frame.size.height * 3;
         }
     }
 

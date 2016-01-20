@@ -35,4 +35,8 @@
     }
 }
 
+- (NSWindowTitleVisibility)titleVisibility {
+    return NSWindowTitleHidden;
+}
+
 @end
